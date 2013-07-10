@@ -7,13 +7,23 @@ describe("html fetcher helpers", function(){
 
   it("should have a 'readUrls' function", function(){
     var urlArray = ["example1.com", "example2.com"];
-    var filePath = path.join(__dirname, "testdata/sites.txt");
+
+    var filePath = path.join(__dirname, "/testdata/sites.txt");
+
     fs.writeFileSync(filePath, urlArray.join("\n"));
+
+    var resultArray;
 
     runs(function(){
       htmlFetcherHelpers.readUrls(filePath, function(urls){
-        expect(urls).toEqual(urlArray);
+        resultArray = urls;
       });
+    });
+
+    waits(200);
+
+    runs(function() {
+      expect(resultArray).toEqual(urlArray);
     });
   });
 

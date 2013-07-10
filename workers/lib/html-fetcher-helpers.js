@@ -1,5 +1,9 @@
+fs = require('fs');
+
 exports.readUrls = function(filePath, cb){
-  // fixme
+  fs.readFile(filePath, {'encoding': 'utf8'}, function(err, data){
+
+  });
 };
 
 exports.downloadUrls = function(urls){
